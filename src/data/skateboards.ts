@@ -18,7 +18,7 @@ export const skateboards: Skateboard[] = [
     name: "Oni Mask",
     price: 5999, // $59.99
     image: {
-      url: "/images/products/oni-mask.png",
+      url: "/images/products/oni-mask.webp",
       alt: "Oni Mask skateboard",
     },
     customizer_link: {
@@ -31,7 +31,7 @@ export const skateboards: Skateboard[] = [
     name: "Pink Drop",
     price: 8999, // $89.99
     image: {
-      url: "/images/products/pink-drop.png",
+      url: "/images/products/pink-drop.webp",
       alt: "Pink Drop skateboard",
     },
     customizer_link: {
@@ -44,7 +44,7 @@ export const skateboards: Skateboard[] = [
     name: "Thank You",
     price: 6999, // $69.99
     image: {
-      url: "/images/products/thank-you.png",
+      url: "/images/products/thank-you.webp",
       alt: "Thank You skateboard",
     },
     customizer_link: {
@@ -57,7 +57,7 @@ export const skateboards: Skateboard[] = [
     name: "Yellow & Black",
     price: 7999, // $79.99
     image: {
-      url: "/images/products/yellow-black.png",
+      url: "/images/products/yellow-black.webp",
       alt: "Yellow & Black skateboard",
     },
     customizer_link: {

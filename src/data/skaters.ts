@@ -22,11 +22,11 @@ export const skaters: Skater[] = [
     first_name: "Sophie",
     last_name: "Castillo",
     photo_background: {
-      url: "/images/team/sophie-back.png",
+      url: "/images/team/sophie-back.webp",
       alt: "Sophie Castillo background",
     },
     photo_foreground: {
-      url: "/images/team/sophie-front.png",
+      url: "/images/team/sophie-front.webp",
       alt: "Sophie Castillo",
     },
     customizer_link: {
@@ -39,11 +39,11 @@ export const skaters: Skater[] = [
     first_name: "Dylan",
     last_name: "Foster",
     photo_background: {
-      url: "/images/team/dylan-back.png",
+      url: "/images/team/dylan-back.webp",
       alt: "Dylan Foster background",
     },
     photo_foreground: {
-      url: "/images/team/dylan-front.png",
+      url: "/images/team/dylan-front.webp",
       alt: "Dylan Foster",
     },
     customizer_link: {
@@ -56,11 +56,11 @@ export const skaters: Skater[] = [
     first_name: "Carter",
     last_name: "Bell",
     photo_background: {
-      url: "/images/team/carter-back.png",
+      url: "/images/team/carter-back.webp",
       alt: "Carter Bell background",
     },
     photo_foreground: {
-      url: "/images/team/carter-front.png",
+      url: "/images/team/carter-front.webp",
       alt: "Carter Bell",
     },
     customizer_link: {
@@ -73,11 +73,11 @@ export const skaters: Skater[] = [
     first_name: "Jordan",
     last_name: "Lee",
     photo_background: {
-      url: "/images/team/jordan-back.png",
+      url: "/images/team/jordan-back.webp",
       alt: "Jordan Lee background",
     },
     photo_foreground: {
-      url: "/images/team/jordan-front.png",
+      url: "/images/team/jordan-front.webp",
       alt: "Jordan Lee",
     },
     customizer_link: {

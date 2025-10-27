@@ -36,13 +36,13 @@ export const settings: Settings = {
     },
   ],
   footer_skateboards: [
-    "/images/products/oni-mask.png",
-    "/images/products/pink-drop.png",
-    "/images/products/thank-you.png",
-    "/images/products/yellow-black.png",
+    "/images/products/oni-mask.webp",
+    "/images/products/pink-drop.webp",
+    "/images/products/thank-you.webp",
+    "/images/products/yellow-black.webp",
   ],
   footer_image: {
-    url: "/images/backgrounds/footer-bg.jpg",
+    url: "/images/backgrounds/footer-bg.webp",
     alt: "Footer background",
   },
 };

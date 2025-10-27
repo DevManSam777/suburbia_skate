@@ -88,7 +88,7 @@ export const homepage: Homepage = {
         text: 'Build Your Board'
       },
       skateboard_deck_texture: {
-        url: "/images/hero/green-and-navy.png",
+        url: "/images/hero/green-and-navy.webp",
         alt: "Green and navy skateboard deck"
       },
       skateboard_wheel_texture: {

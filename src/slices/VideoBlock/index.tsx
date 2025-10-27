@@ -51,7 +51,7 @@ const VideoBlock = ({ slice }: VideoBlockProps): JSX.Element => {
           ) : null}
           {/* Texture overlay */}
           <Image
-            src="/image-texture.png"
+            src="/image-texture.webp"
             alt=""
             fill
             className="pointer-events-none object-cover opacity-50"
