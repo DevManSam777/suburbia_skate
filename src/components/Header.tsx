@@ -7,7 +7,6 @@ import { SignedIn, SignedOut, SignOutButton, useUser } from "@clerk/nextjs";
 import { Logo } from "./Logo";
 import { settings } from "@/data/settings";
 import { CartButton } from "./CartButton";
-import { FaBars, FaXmark } from "react-icons/fa6";
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -79,16 +78,22 @@ export function Header() {
               </SignOutButton>
             </SignedIn>
 
-            <CartButton />
-
-            {/* Burger Menu Button - Mobile Only */}
-            <button
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="md:hidden text-2xl hover:text-brand-purple transition-colors ml-2"
-              aria-label="Toggle menu"
-            >
-              {isMenuOpen ? <FaXmark /> : <FaBars />}
-            </button>
+            <div className="md:hidden flex items-center gap-4">
+              <CartButton />
+              <button
+                onClick={() => setIsMenuOpen(!isMenuOpen)}
+                className="relative z-50 w-8 h-8 flex flex-col items-center justify-center gap-1.5 group"
+                aria-label="Toggle menu"
+              >
+                <span className={`block h-1 w-7 bg-brand-purple transition-all duration-300 ${isMenuOpen ? 'rotate-45 translate-y-2.5' : ''}`}></span>
+                <span className={`block h-1 w-7 bg-brand-purple transition-all duration-300 ${isMenuOpen ? 'opacity-0' : ''}`}></span>
+                <span className={`block h-1 w-7 bg-brand-purple transition-all duration-300 ${isMenuOpen ? '-rotate-45 -translate-y-2.5' : ''}`}></span>
+              </button>
+            </div>
+            
+            <div className="hidden md:block">
+              <CartButton />
+            </div>
           </div>
         </div>
 

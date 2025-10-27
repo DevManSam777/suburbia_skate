@@ -6,7 +6,6 @@ import "./globals.css";
 import { SVGFilters } from "@/components/SVGFilters";
 import { CartProvider } from "@/context/CartContext";
 import { Toaster } from "react-hot-toast";
-import { Header } from "@/components/Header";
 
 const bowlby = Bowlby_One_SC({
   subsets: ["latin"],
@@ -40,7 +39,6 @@ export default function RootLayout({
           suppressHydrationWarning
         >
           <CartProvider>
-            <Header />
             <main>{children}</main>
             <SVGFilters />
             <Toaster position="top-right" />
