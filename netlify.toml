@@ -2,6 +2,10 @@
   command = "npm run build"
   publish = ".next"
 
+[build.environment]
+  # These secrets are set as Netlify environment variables and used only in server-side API routes
+  SECRETS_SCAN_OMIT_KEYS = "CLERK_SECRET_KEY,PAYPAL_CLIENT_SECRET,NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY,NEXT_PUBLIC_PAYPAL_CLIENT_ID,PAYPAL_MODE"
+
 [[plugins]]
   package = "@netlify/plugin-nextjs"
 
