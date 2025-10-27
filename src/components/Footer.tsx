@@ -25,11 +25,23 @@ export function Footer() {
       </div>
       <Bounded as="nav">
         <ul className="flex flex-wrap justify-center gap-8 ~text-lg/xl">
+          <li className="hidden md:block">
+            &copy;{new Date().getFullYear()}{' '}
+            <a href="https://github.com/DevManSam777/suburbia_skate" target="_blank" rel="noopener noreferrer" className="hover:underline">
+              DevManSam
+            </a>
+          </li>
           {settings.navigation.map((item) => (
             <li key={item.link.text} className="hover:underline">
               <Link href={item.link.url}>{item.link.text}</Link>
             </li>
           ))}
+          <li className="md:hidden w-full text-center mt-4">
+            &copy;{new Date().getFullYear()}{' '}
+            <a href="https://github.com/DevManSam777/suburbia_skate" target="_blank" rel="noopener noreferrer" className="hover:underline">
+              DevManSam
+            </a>
+          </li>
         </ul>
       </Bounded>
       {/* List of links */}
