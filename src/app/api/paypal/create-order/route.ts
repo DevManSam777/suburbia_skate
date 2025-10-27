@@ -23,15 +23,25 @@ async function getAccessToken() {
   return data.access_token;
 }
 
+type CartItem = {
+  id: string;
+  deck: { name: string; texture: string };
+  wheel: { name: string };
+  truck: { name: string };
+  bolt: { name: string };
+  price: number;
+  quantity: number;
+};
+
 export async function POST(req: NextRequest) {
   try {
-    const { cart } = await req.json();
+    const { cart }: { cart: CartItem[] } = await req.json();
 
     const accessToken = await getAccessToken();
 
     // Calculate total from cart items
     const total = cart.reduce(
-      (sum: number, item: any) => sum + item.price * item.quantity,
+      (sum: number, item: CartItem) => sum + item.price * item.quantity,
       0
     );
 
@@ -50,7 +60,7 @@ export async function POST(req: NextRequest) {
               },
             },
           },
-          items: cart.map((item: any) => ({
+          items: cart.map((item: CartItem) => ({
             name: "Custom Skateboard",
             description: `Deck: ${item.deck.name}, Wheels: ${item.wheel.name}`,
             unit_amount: {

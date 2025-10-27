@@ -40,7 +40,7 @@ export default function CheckoutPage() {
     }
   };
 
-  const onApprove = async (data: any) => {
+  const onApprove = async (data: { orderID: string }) => {
     try {
       setIsLoading(true);
       console.log("Payment approved, capturing order...", data);

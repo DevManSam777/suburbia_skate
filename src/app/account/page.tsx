@@ -8,14 +8,38 @@ import { Bounded } from "@/components/Bounded";
 import { Heading } from "@/components/Heading";
 import { FaUser, FaBox } from "react-icons/fa6";
 
+type CartItem = {
+  id: string;
+  deck: { name: string; texture: string };
+  wheel: { name: string };
+  truck: { name: string };
+  bolt: { name: string };
+  price: number;
+  quantity: number;
+};
+
+type ShippingAddress = {
+  address_line_1: string;
+  address_line_2?: string;
+  admin_area_1: string;
+  admin_area_2: string;
+  postal_code: string;
+  country_code: string;
+};
+
+type PayerInfo = {
+  name?: { given_name: string; surname: string };
+  email_address?: string;
+};
+
 type OrderData = {
   orderNumber: string;
-  items: any[];
+  items: CartItem[];
   total: number;
   paypalOrderId: string;
   timestamp: string;
-  shippingAddress?: any;
-  payerInfo?: any;
+  shippingAddress?: ShippingAddress;
+  payerInfo?: PayerInfo;
 };
 
 export default function AccountPage() {
@@ -68,7 +92,7 @@ export default function AccountPage() {
                 <p className="text-sm text-gray-600 mb-1">Username</p>
                 <p className="font-semibold">{user.username || "Not set"}</p>
                 {!user.username && (
-                  <p className="text-xs text-gray-500 mt-1">Click "Edit Profile" to set a username</p>
+                  <p className="text-xs text-gray-500 mt-1">Click &quot;Edit Profile&quot; to set a username</p>
                 )}
               </div>
               <div className="p-4 bg-brand-gray rounded-lg">

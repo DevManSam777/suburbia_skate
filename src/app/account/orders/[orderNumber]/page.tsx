@@ -9,14 +9,38 @@ import { Bounded } from "@/components/Bounded";
 import { Heading } from "@/components/Heading";
 import { FaPrint, FaArrowLeft } from "react-icons/fa6";
 
+type CartItem = {
+  id: string;
+  deck: { name: string; texture: string };
+  wheel: { name: string };
+  truck: { name: string };
+  bolt: { name: string };
+  price: number;
+  quantity: number;
+};
+
+type ShippingAddress = {
+  address_line_1: string;
+  address_line_2?: string;
+  admin_area_1: string;
+  admin_area_2: string;
+  postal_code: string;
+  country_code: string;
+};
+
+type PayerInfo = {
+  name?: { given_name: string; surname: string };
+  email_address?: string;
+};
+
 type OrderData = {
   orderNumber: string;
-  items: any[];
+  items: CartItem[];
   total: number;
   paypalOrderId: string;
   timestamp: string;
-  shippingAddress?: any;
-  payerInfo?: any;
+  shippingAddress?: ShippingAddress;
+  payerInfo?: PayerInfo;
 };
 
 export default function OrderDetailsPage() {
@@ -40,10 +64,6 @@ export default function OrderDetailsPage() {
       }
     }
   }, [user, params.orderNumber, router]);
-
-  const handlePrint = () => {
-    window.print();
-  };
 
   if (!order) {
     return (
