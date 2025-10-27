@@ -22,7 +22,7 @@ export function Skater({ skater, index }: Props) {
 
   return (
     <div className="skater group relative flex flex-col items-center gap-4">
-      <div className="stack-layout overflow-hidden">
+      <div className="stack-layout overflow-hidden relative">
         <Image
           src={skater.photo_background.url}
           alt={skater.photo_background.alt}
@@ -43,6 +43,13 @@ export function Skater({ skater, index }: Props) {
           <span className="mb-[-.3em] block">{skater.first_name}</span>
           <span className="block">{skater.last_name}</span>
         </h3>
+        
+        {/* Bio - Slides up on hover */}
+        <div className="absolute bottom-0 left-0 right-0 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out bg-gradient-to-t from-black/80 via-black/60 to-transparent p-6 pb-20">
+          <p className="text-sm text-white/90 italic">
+            {skater.bio}
+          </p>
+        </div>
       </div>
       <Link
         href={skater.customizer_link.url}

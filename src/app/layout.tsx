@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
 import { Bowlby_One_SC, DM_Mono } from "next/font/google";
+import { ClerkProvider } from "@clerk/nextjs";
 
 import "./globals.css";
 import { SVGFilters } from "@/components/SVGFilters";
 import { CartProvider } from "@/context/CartContext";
 import { Toaster } from "react-hot-toast";
+import { Header } from "@/components/Header";
 
 const bowlby = Bowlby_One_SC({
   subsets: ["latin"],
@@ -31,17 +33,20 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body
-        className={`${bowlby.variable} ${dmMono.variable} antialiased font-mono font-medium text-zinc-800`}
-        suppressHydrationWarning
-      >
-        <CartProvider>
-          <main>{children}</main>
-          <SVGFilters />
-          <Toaster position="top-right" />
-        </CartProvider>
-      </body>
-    </html>
+    <ClerkProvider>
+      <html lang="en" suppressHydrationWarning>
+        <body
+          className={`${bowlby.variable} ${dmMono.variable} antialiased font-mono font-medium text-zinc-800`}
+          suppressHydrationWarning
+        >
+          <CartProvider>
+            <Header />
+            <main>{children}</main>
+            <SVGFilters />
+            <Toaster position="top-right" />
+          </CartProvider>
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }

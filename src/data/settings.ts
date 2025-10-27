@@ -18,20 +18,20 @@ export const settings: Settings = {
   navigation: [
     {
       link: {
-        url: "#team",
-        text: "Team",
+        url: "/build",
+        text: "Build",
       },
     },
     {
       link: {
-        url: "#products",
+        url: "/#products",
         text: "Products",
       },
     },
     {
       link: {
-        url: "#about",
-        text: "About",
+        url: "/#team",
+        text: "Team",
       },
     },
   ],

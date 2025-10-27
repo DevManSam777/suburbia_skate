@@ -6,6 +6,25 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Print Styles */
+@media print {
+  .header {
+    display: none !important;
+  }
+  
+  body {
+    background: white !important;
+  }
+  
+  .bg-texture {
+    background-image: none !important;
+  }
+  
+  @page {
+    margin: 1cm;
+  }
+}
+
 .bg-texture {
   background-image: url("/bg-texture.webp");
   background-size: 720px 460px;

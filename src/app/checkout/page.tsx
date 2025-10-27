@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import { useUser } from "@clerk/nextjs";
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 import { Bounded } from "@/components/Bounded";
 import { Heading } from "@/components/Heading";
@@ -11,6 +12,7 @@ import toast from "react-hot-toast";
 
 export default function CheckoutPage() {
   const router = useRouter();
+  const { user } = useUser();
   const { items, totalPrice, clearCart } = useCart();
   const [isLoading, setIsLoading] = useState(false);
 
@@ -77,6 +79,16 @@ export default function CheckoutPage() {
         
         // Store order in localStorage for success page
         localStorage.setItem("lastOrder", JSON.stringify(orderData));
+        
+        // If user is logged in, also save to their order history
+        if (user) {
+          const userOrdersKey = `orders_${user.id}`;
+          const existingOrders = localStorage.getItem(userOrdersKey);
+          const orders = existingOrders ? JSON.parse(existingOrders) : [];
+          orders.unshift(orderData); // Add to beginning of array (most recent first)
+          localStorage.setItem(userOrdersKey, JSON.stringify(orders));
+          console.log("Order saved to user history");
+        }
         
         // Verify it was saved
         const saved = localStorage.getItem("lastOrder");
