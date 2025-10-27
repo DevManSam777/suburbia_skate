@@ -46,9 +46,19 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
         </Heading>
         <div className="flex relative w-full flex-col items-center justify-between ~gap-2/4 lg:flex-row">
           <div className="max-w-[45ch] font-semibold ~text-lg/xl">
-            {slice.body.map((paragraph, index) => (
-              <p key={index}>{paragraph.text}</p>
-            ))}
+            {slice.body.map((paragraph, index) => {
+              if (paragraph.emphasis) {
+                const parts = paragraph.text.split(paragraph.emphasis);
+                return (
+                  <p key={index}>
+                    {parts[0]}
+                    <span className="font-black text-brand-orange">{paragraph.emphasis}</span>
+                    {parts[1]}
+                  </p>
+                );
+              }
+              return <p key={index}>{paragraph.text}</p>;
+            })}
           </div>
           <Link
             href={slice.button.url}

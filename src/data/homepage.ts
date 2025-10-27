@@ -11,6 +11,7 @@ export type Link = {
 export type RichText = Array<{
   type: 'paragraph';
   text: string;
+  emphasis?: string; // Text to emphasize within the paragraph
 }>;
 
 export type HeroSlice = {
@@ -80,7 +81,7 @@ export const homepage: Homepage = {
       slice_type: 'hero',
       heading: "Escape the Cul-de-sac",
       body: [
-        { type: 'paragraph', text: "Not just a board, _your_ board. Design a board that's as real as the places you take it." }
+        { type: 'paragraph', text: "Not just a board, your board. Design a board that's as real as the places you take it.", emphasis: "your board" }
       ],
       button: {
         url: '/build',
