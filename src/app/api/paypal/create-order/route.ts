@@ -61,6 +61,9 @@ export async function POST(req: NextRequest) {
           })),
         },
       ],
+      application_context: {
+        shipping_preference: "GET_FROM_FILE", // Request shipping address from PayPal
+      },
     };
 
     const response = await fetch(`${PAYPAL_API_BASE}/v2/checkout/orders`, {

@@ -1,6 +1,7 @@
 "use client";
 
 import React, { createContext, useContext, useState, useEffect, ReactNode } from "react";
+import toast from "react-hot-toast";
 
 export type CartItem = {
   id: string;
@@ -49,8 +50,9 @@ export function CartProvider({ children }: { children: ReactNode }) {
   }, [items, isClient]);
 
   const addItem = (newItem: Omit<CartItem, "quantity">) => {
+    const existingItem = items.find((item) => item.id === newItem.id);
+    
     setItems((prevItems) => {
-      const existingItem = prevItems.find((item) => item.id === newItem.id);
       if (existingItem) {
         return prevItems.map((item) =>
           item.id === newItem.id
@@ -60,10 +62,18 @@ export function CartProvider({ children }: { children: ReactNode }) {
       }
       return [...prevItems, { ...newItem, quantity: 1 }];
     });
+
+    // Toast after state update to prevent duplicates
+    if (existingItem) {
+      toast.success("Updated quantity in cart");
+    } else {
+      toast.success("Added to cart!");
+    }
   };
 
   const removeItem = (id: string) => {
     setItems((prevItems) => prevItems.filter((item) => item.id !== id));
+    toast.success("Removed from cart");
   };
 
   const updateQuantity = (id: string, quantity: number) => {

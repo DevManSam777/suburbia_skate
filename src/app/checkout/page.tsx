@@ -7,6 +7,7 @@ import { Bounded } from "@/components/Bounded";
 import { Heading } from "@/components/Heading";
 import { useCart } from "@/context/CartContext";
 import Image from "next/image";
+import toast from "react-hot-toast";
 
 export default function CheckoutPage() {
   const router = useRouter();
@@ -40,6 +41,8 @@ export default function CheckoutPage() {
   const onApprove = async (data: any) => {
     try {
       setIsLoading(true);
+      console.log("Payment approved, capturing order...", data);
+      
       const response = await fetch("/api/paypal/capture-order", {
         method: "POST",
         headers: {
@@ -49,16 +52,47 @@ export default function CheckoutPage() {
       });
 
       const details = await response.json();
+      console.log("Capture response:", details);
 
       if (details.status === "COMPLETED") {
+        toast.success("Payment successful!");
+        
+        // Extract shipping address from PayPal response
+        const shippingAddress = details.purchase_units?.[0]?.shipping?.address || null;
+        const payerInfo = details.payer || null;
+        
+        // Generate order number and save order details
+        const orderNumber = `ORD-${Date.now()}-${Math.random().toString(36).substr(2, 9).toUpperCase()}`;
+        const orderData = {
+          orderNumber,
+          items: items,
+          total: totalPrice,
+          paypalOrderId: data.orderID,
+          timestamp: new Date().toISOString(),
+          shippingAddress,
+          payerInfo,
+        };
+        
+        console.log("Saving order data:", orderData);
+        
+        // Store order in localStorage for success page
+        localStorage.setItem("lastOrder", JSON.stringify(orderData));
+        
+        // Verify it was saved
+        const saved = localStorage.getItem("lastOrder");
+        console.log("Order saved to localStorage:", saved ? "yes" : "no");
+        
         clearCart();
-        router.push("/checkout/success");
+        
+        // Use window.location instead of router.push for more reliable navigation
+        window.location.href = "/checkout/success";
       } else {
-        alert("Payment failed. Please try again.");
+        console.error("Payment not completed:", details);
+        toast.error("Payment failed. Please try again.");
       }
     } catch (error) {
       console.error("Error capturing order:", error);
-      alert("An error occurred during payment. Please try again.");
+      toast.error("An error occurred during payment. Please try again.");
     } finally {
       setIsLoading(false);
     }

@@ -4,6 +4,7 @@ import { Bowlby_One_SC, DM_Mono } from "next/font/google";
 import "./globals.css";
 import { SVGFilters } from "@/components/SVGFilters";
 import { CartProvider } from "@/context/CartContext";
+import { Toaster } from "react-hot-toast";
 
 const bowlby = Bowlby_One_SC({
   subsets: ["latin"],
@@ -38,6 +39,7 @@ export default function RootLayout({
         <CartProvider>
           <main>{children}</main>
           <SVGFilters />
+          <Toaster position="top-right" />
         </CartProvider>
       </body>
     </html>
