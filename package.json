@@ -10,6 +10,8 @@
   },
   "dependencies": {
     "@gsap/react": "^2.1.1",
+    "@paypal/checkout-server-sdk": "^1.0.3",
+    "@paypal/react-paypal-js": "^8.9.2",
     "@react-three/drei": "^9.120.4",
     "@react-three/fiber": "^9.0.0-rc.1",
     "@types/matter-js": "^0.19.8",
