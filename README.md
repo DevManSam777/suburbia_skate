@@ -1,6 +1,6 @@
 # Suburbia Skate
 
-A modern e-commerce platform for custom skateboard design and purchase. Built with Next.js 15 and React 19, featuring an interactive 3D skateboard customizer powered by Three.js.
+A modern e-commerce platform for custom skateboard design and purchase. Built with Next.js 15 featuring an interactive 3D skateboard customizer powered by React Three Fiber.
 
 ## Features
 
@@ -51,7 +51,7 @@ npm install
 Create a `.env.local` file with the following:
 
 ```env
-# PayPal Configuration (Sandbox)
+# PayPal Configuration
 NEXT_PUBLIC_PAYPAL_CLIENT_ID=your_paypal_client_id
 PAYPAL_CLIENT_SECRET=your_paypal_client_secret
 PAYPAL_MODE=sandbox
