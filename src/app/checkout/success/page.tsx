@@ -5,7 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Bounded } from "@/components/Bounded";
 import { Heading } from "@/components/Heading";
-import { FaCircleCheck } from "react-icons/fa6";
+import { FaCircleCheck, FaHouse } from "react-icons/fa6";
 
 type CartItem = {
   id: string;
@@ -226,13 +226,17 @@ export default function CheckoutSuccessPage() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href="/"
-              className="inline-flex items-center justify-center gap-2 rounded-full bg-brand-purple px-6 py-3 font-semibold text-white transition-transform hover:scale-105"
+              className="button-cutout group inline-flex items-center bg-gradient-to-b from-25% to-75% bg-[length:100%_400%] font-bold transition-[filter,background-position] duration-300 hover:bg-bottom gap-3 px-1 text-lg ~py-2.5/3 from-brand-purple to-brand-lime text-white"
             >
+              <div className="flex size-6 items-center justify-center transition-transform group-hover:-rotate-[25deg] [&>svg]:h-full [&>svg]:w-full">
+                <FaHouse />
+              </div>
+              <div className="w-px self-stretch bg-white/25" />
               Return to Home
             </Link>
             <Link
               href="/build"
-              className="inline-flex items-center justify-center gap-2 rounded-full border-2 border-brand-purple px-6 py-3 font-semibold text-brand-purple transition-transform hover:scale-105"
+              className="button-cutout inline-flex items-center bg-gradient-to-b from-25% to-75% bg-[length:100%_400%] font-bold transition-[filter,background-position] duration-300 hover:bg-bottom px-4 text-lg ~py-2.5/3 from-brand-orange to-brand-lime text-black"
             >
               Build Another Board
             </Link>

@@ -23,7 +23,7 @@ export function Header() {
     <header className="header absolute left-0 right-0 top-0 z-50 ~h-32/48 ~px-4/6 ~py-4/6 hd:h-32">
       <div className="mx-auto w-full max-w-6xl">
         {/* Top Row: Logo (Mobile) or Logo + Nav + Auth/Cart (Desktop) */}
-        <div className="flex items-center justify-between md:grid md:grid-cols-[1fr,auto,1fr] md:gap-6">
+        <div className="flex items-center justify-between lg:grid lg:grid-cols-[1fr,auto,1fr] lg:gap-6">
           <Link href="/" className="flex-shrink-0">
             <Logo className="text-brand-purple ~h-12/20" />
           </Link>
@@ -31,14 +31,14 @@ export function Header() {
           {/* Desktop Navigation - Center Column */}
           <nav
             aria-label="Main"
-            className="hidden md:flex"
+            className="hidden lg:flex"
           >
             <ul className="flex flex-wrap items-center justify-center gap-8">
               {settings.navigation.map((item) => (
                 <li key={item.link.text}>
                   <Link
                     href={item.link.url}
-                    className="text-base md:text-lg hover:text-brand-purple transition-colors"
+                    className="text-base hover:text-brand-purple transition-colors"
                     scroll={true}
                   >
                     {item.link.text}
@@ -49,7 +49,7 @@ export function Header() {
                 <li>
                   <Link
                     href="/account"
-                    className="text-base md:text-lg hover:text-brand-purple transition-colors"
+                    className="text-base hover:text-brand-purple transition-colors"
                     title="View Account"
                   >
                     Hi,&nbsp;{firstName}
@@ -65,20 +65,20 @@ export function Header() {
             <SignedOut>
               <Link
                 href="/sign-in"
-                className="hidden md:inline-flex button-cutout group items-center bg-gradient-to-b from-25% to-75% bg-[length:100%_400%] font-bold transition-[filter,background-position] duration-300 hover:bg-bottom gap-2 md:gap-3 px-1 text-sm md:text-lg ~py-2.5/3 from-brand-orange to-brand-lime text-black mr-4"
+                className="hidden lg:inline-flex button-cutout group items-center bg-gradient-to-b from-25% to-75% bg-[length:100%_400%] font-bold transition-[filter,background-position] duration-300 hover:bg-bottom gap-3 px-1 text-lg ~py-2.5/3 from-brand-orange to-brand-lime text-black mr-4"
               >
-                Sign In
+                Login
               </Link>
             </SignedOut>
             <SignedIn>
               <SignOutButton>
-                <button className="hidden md:inline-flex button-cutout group items-center bg-gradient-to-b from-25% to-75% bg-[length:100%_400%] font-bold transition-[filter,background-position] duration-300 hover:bg-bottom gap-2 md:gap-3 px-1 text-sm md:text-lg ~py-2.5/3 from-brand-orange to-brand-lime text-black mr-4">
-                  Sign Out
+                <button className="hidden lg:inline-flex button-cutout group items-center bg-gradient-to-b from-25% to-75% bg-[length:100%_400%] font-bold transition-[filter,background-position] duration-300 hover:bg-bottom gap-3 px-1 text-lg ~py-2.5/3 from-brand-orange to-brand-lime text-black mr-4">
+                  Logout
                 </button>
               </SignOutButton>
             </SignedIn>
 
-            <div className="md:hidden flex items-center gap-4">
+            <div className="lg:hidden flex items-center gap-4">
               <CartButton />
               <button
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -90,8 +90,8 @@ export function Header() {
                 <span className={`block h-1 w-7 bg-brand-purple transition-all duration-300 ${isMenuOpen ? '-rotate-45 -translate-y-2.5' : ''}`}></span>
               </button>
             </div>
-            
-            <div className="hidden md:block">
+
+            <div className="hidden lg:block">
               <CartButton />
             </div>
           </div>
@@ -100,7 +100,7 @@ export function Header() {
         {/* Mobile Navigation Menu */}
         {isMenuOpen && (
           <nav
-            className="md:hidden bg-brand-gray rounded-lg shadow-lg p-6 mt-4"
+            className="lg:hidden bg-brand-gray rounded-lg shadow-lg p-6 mt-4"
             aria-label="Mobile menu"
           >
             <ul className="flex flex-col gap-4">
@@ -135,7 +135,7 @@ export function Header() {
                     className="button-cutout group inline-flex items-center bg-gradient-to-b from-25% to-75% bg-[length:100%_400%] font-bold transition-[filter,background-position] duration-300 hover:bg-bottom gap-3 px-1 text-lg py-3 from-brand-orange to-brand-lime text-black w-full justify-center"
                     onClick={() => setIsMenuOpen(false)}
                   >
-                    Sign In
+                    Login
                   </Link>
                 </li>
               </SignedOut>
@@ -143,7 +143,7 @@ export function Header() {
                 <li>
                   <SignOutButton>
                     <button className="button-cutout group inline-flex items-center bg-gradient-to-b from-25% to-75% bg-[length:100%_400%] font-bold transition-[filter,background-position] duration-300 hover:bg-bottom gap-3 px-1 text-lg py-3 from-brand-orange to-brand-lime text-black w-full justify-center">
-                      Sign Out
+                      Logout
                     </button>
                   </SignOutButton>
                 </li>

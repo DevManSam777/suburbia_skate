@@ -5,6 +5,7 @@ import { TallLogo } from "./TallLogo";
 import { InteractiveSkateboard } from "./InteractiveSkateboard";
 import { HeroSlice } from "@/data/homepage";
 import Link from "next/link";
+import { SkateboardIcon } from "@/components/SkateboardIcon";
 
 const DEFAULT_DECK_TEXTURE = "/skateboard/Deck.webp";
 const DEFAULT_WHEEL_TEXTURE = "/skateboard/SkateWheel1.png";
@@ -62,8 +63,12 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
           </div>
           <Link
             href={slice.button.url}
-            className="z-20 mt-2 block inline-flex items-center gap-2 rounded-full bg-brand-lime px-6 py-3 font-semibold text-zinc-900 transition-transform hover:scale-105"
+            className="button-cutout group z-20 mt-2 inline-flex items-center bg-gradient-to-b from-25% to-75% bg-[length:100%_400%] font-bold transition-[filter,background-position] duration-300 hover:bg-bottom gap-4 px-2 ~text-lg/xl ~py-3/4 from-brand-orange to-brand-lime text-black"
           >
+            <div className="flex ~size-6/8 items-center justify-center transition-transform group-hover:-rotate-[25deg]">
+              <SkateboardIcon className="h-full w-full" />
+            </div>
+            <div className="w-px self-stretch bg-black/25" />
             {slice.button.text}
           </Link>
         </div>

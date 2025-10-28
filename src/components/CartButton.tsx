@@ -10,15 +10,15 @@ export function CartButton() {
   return (
     <Link
       href="/cart"
-      className="button-cutout group mx-4 inline-flex items-center gap-3 px-1 text-lg ~py-2.5/3 bg-gradient-to-b from-brand-purple to-brand-lime from-25% to-75% bg-[length:100%_400%] font-bold text-white hover:text-black transition-[filter,background-position] duration-300 hover:bg-bottom"
+      className="button-cutout group mx-4 inline-flex items-center whitespace-nowrap gap-2 lg:gap-3 px-1 text-sm lg:text-lg ~py-2.5/3 bg-gradient-to-b from-brand-purple to-brand-lime from-25% to-75% bg-[length:100%_400%] font-bold text-white hover:text-black transition-[filter,background-position] duration-300 hover:bg-bottom"
       aria-label={`Cart (${totalItems})`}
     >
-      <div className="flex size-6 items-center justify-center transition-transform group-hover:-rotate-[25deg]">
+      <div className="flex size-5 lg:size-6 items-center justify-center transition-transform group-hover:-rotate-[25deg]">
         <FaCartShopping />
       </div>
       <div className="w-px self-stretch bg-black/25" />
-      <span className="md:hidden">{totalItems}</span>
-      <span className="hidden md:inline">Cart ({totalItems})</span>
+      <span className="lg:hidden">{totalItems}</span>
+      <span className="hidden lg:inline">Cart ({totalItems})</span>
     </Link>
   );
 }

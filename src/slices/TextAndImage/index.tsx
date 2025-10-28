@@ -29,7 +29,7 @@ const TextAndImage = ({ slice, index }: TextAndImageProps): JSX.Element => {
     <Bounded
       data-slice-type={slice.slice_type}
       className={clsx(
-        "sticky top-[calc(var(--index)*2rem)]",
+        "sticky top-[calc(var(--index)*2rem)] min-h-screen flex items-center",
         theme === "Blue" && "bg-texture bg-brand-blue text-white",
         theme === "Orange" && "bg-texture bg-brand-orange text-white",
         theme === "Navy" && "bg-texture bg-brand-navy text-white",
@@ -45,7 +45,7 @@ const TextAndImage = ({ slice, index }: TextAndImageProps): JSX.Element => {
           )}
         >
           <SlideIn>
-            <Heading size="lg" as="h2">
+            <Heading size="lg" as="h2" className="break-words hyphens-auto ~text-3xl/7xl">
               {slice.heading}
             </Heading>
           </SlideIn>
@@ -60,8 +60,12 @@ const TextAndImage = ({ slice, index }: TextAndImageProps): JSX.Element => {
             <Link
               href={slice.button.url}
               className={clsx(
-                "inline-flex items-center gap-2 rounded-full px-6 py-3 font-semibold transition-transform hover:scale-105",
-                theme === "Lime" ? "bg-brand-orange text-white" : "bg-brand-lime text-zinc-900"
+                "button-cutout inline-flex items-center bg-gradient-to-b from-25% to-75% bg-[length:100%_400%] font-bold transition-[filter,background-position] duration-300 hover:bg-bottom px-4 text-lg ~py-2.5/3",
+                theme === "Lime"
+                  ? "from-brand-purple to-brand-orange text-white"
+                  : theme === "Orange"
+                  ? "from-brand-blue to-brand-lime text-white"
+                  : "from-brand-orange to-brand-lime text-black"
               )}
             >
               {slice.button.text}

@@ -101,9 +101,12 @@ export default function OrderDetailsPage() {
             <button
               type="button"
               onClick={() => window.print()}
-              className="inline-flex items-center gap-2 rounded-full bg-brand-purple px-6 py-3 font-semibold text-white transition-transform hover:scale-105 cursor-pointer"
+              className="button-cutout group inline-flex items-center bg-gradient-to-b from-25% to-75% bg-[length:100%_400%] font-bold transition-[filter,background-position] duration-300 hover:bg-bottom gap-3 px-1 text-lg ~py-2.5/3 from-brand-purple to-brand-lime text-white cursor-pointer"
             >
-              <FaPrint />
+              <div className="flex size-6 items-center justify-center transition-transform group-hover:-rotate-[25deg] [&>svg]:h-full [&>svg]:w-full">
+                <FaPrint />
+              </div>
+              <div className="w-px self-stretch bg-white/25" />
               <span>Print Invoice</span>
             </button>
           </div>

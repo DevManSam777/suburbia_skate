@@ -171,13 +171,13 @@ export const homepage: Homepage = {
     },
     {
       slice_type: 'text_and_image',
-      heading: "Fueling the Next Generation",
+      heading: "Inspiring the Next Wave",
       body: [
         { type: 'paragraph', text: "Inspiring young skaters to push their limits. Join the movement and show us what you've got." }
       ],
       button: {
-        url: '#team',
-        text: 'Meet the Team'
+        url: '#products',
+        text: 'Shop Boards'
       },
       theme: 'Lime',
       foreground_image: {

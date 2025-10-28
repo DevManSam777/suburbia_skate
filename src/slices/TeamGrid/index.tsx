@@ -30,13 +30,9 @@ const TeamGrid = ({ slice }: TeamGridProps): JSX.Element => {
       </SlideIn>
       <div className="grid grid-cols-1 gap-8 md:grid-cols-4">
         {skaters.map((skater, index) => (
-          <React.Fragment key={index}>
-            {skater.first_name && (
-              <SlideIn>
-                <Skater index={index} skater={skater} />
-              </SlideIn>
-            )}
-          </React.Fragment>
+          <SlideIn key={skater.id}>
+            <Skater index={index} skater={skater} />
+          </SlideIn>
         ))}
       </div>
     </Bounded>

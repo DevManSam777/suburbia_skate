@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Bounded } from "@/components/Bounded";
 import { Heading } from "@/components/Heading";
-import { FaCartShopping, FaTrash } from "react-icons/fa6";
+import { FaCartShopping, FaTrash, FaCreditCard } from "react-icons/fa6";
 import { useCart } from "@/context/CartContext";
 
 export default function CartPage() {
@@ -26,8 +26,12 @@ export default function CartPage() {
           <div className="space-y-4">
             <Link
               href="/#products"
-              className="inline-flex items-center gap-2 rounded-full bg-brand-purple px-6 py-3 font-semibold text-white transition-transform hover:scale-105"
+              className="button-cutout group inline-flex items-center bg-gradient-to-b from-25% to-75% bg-[length:100%_400%] font-bold transition-[filter,background-position] duration-300 hover:bg-bottom gap-3 px-1 text-lg ~py-2.5/3 from-brand-purple to-brand-lime text-white"
             >
+              <div className="flex size-6 items-center justify-center transition-transform group-hover:-rotate-[25deg] [&>svg]:h-full [&>svg]:w-full">
+                <FaCartShopping />
+              </div>
+              <div className="w-px self-stretch bg-white/25" />
               Shop Boards
             </Link>
           </div>
@@ -149,8 +153,12 @@ export default function CartPage() {
 
               <Link
                 href="/checkout"
-                className="block w-full bg-brand-purple text-white py-3 rounded-full font-semibold hover:bg-opacity-90 transition-all hover:scale-105 mb-3 text-center"
+                className="button-cutout group inline-flex items-center bg-gradient-to-b from-25% to-75% bg-[length:100%_400%] font-bold transition-[filter,background-position] duration-300 hover:bg-bottom gap-3 px-1 text-lg ~py-2.5/3 from-brand-purple to-brand-lime text-white w-full justify-center mb-3"
               >
+                <div className="flex size-6 items-center justify-center transition-transform group-hover:-rotate-[25deg] [&>svg]:h-full [&>svg]:w-full">
+                  <FaCreditCard />
+                </div>
+                <div className="w-px self-stretch bg-white/25" />
                 Checkout
               </Link>
 

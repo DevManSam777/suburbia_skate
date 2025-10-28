@@ -67,7 +67,7 @@ export function SkateboardProduct({ id }: Props) {
       <div className="absolute inset-0 flex items-center justify-center opacity-0 transition-opacity duration-200 group-hover:opacity-100">
         <Link
           href={product.customizer_link.url}
-          className="inline-flex items-center gap-2 rounded-full bg-brand-lime px-4 py-2 font-semibold text-zinc-900 transition-transform hover:scale-105"
+          className="button-cutout inline-flex items-center bg-gradient-to-b from-25% to-75% bg-[length:100%_400%] font-bold transition-[filter,background-position] duration-300 hover:bg-bottom px-4 text-base ~py-2/2.5 from-brand-orange to-brand-lime text-black"
         >
           {product.customizer_link.text}
         </Link>

@@ -6,7 +6,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Bounded } from "@/components/Bounded";
 import { Heading } from "@/components/Heading";
-import { FaUser, FaBox } from "react-icons/fa6";
+import { FaUser, FaBox, FaPencil, FaArrowLeft } from "react-icons/fa6";
 
 type CartItem = {
   id: string;
@@ -73,6 +73,15 @@ export default function AccountPage() {
     <div className="min-h-screen bg-texture bg-brand-gray py-12">
       <Bounded>
         <div className="max-w-5xl mx-auto">
+          {/* Back to Home Link */}
+          <Link
+            href="/"
+            className="inline-flex items-center gap-2 text-gray-700 hover:text-brand-purple transition-colors mb-6"
+          >
+            <FaArrowLeft />
+            <span className="font-semibold">Back to Home</span>
+          </Link>
+
           {/* Profile Header */}
           <div className="bg-white rounded-lg shadow-md p-8 mb-6">
             <div className="flex items-center gap-6 mb-6">
@@ -110,8 +119,12 @@ export default function AccountPage() {
             <div className="mt-6">
               <Link
                 href="/account/profile"
-                className="inline-flex items-center gap-2 rounded-full bg-brand-purple px-6 py-3 font-semibold text-white transition-transform hover:scale-105"
+                className="button-cutout group inline-flex items-center bg-gradient-to-b from-25% to-75% bg-[length:100%_400%] font-bold transition-[filter,background-position] duration-300 hover:bg-bottom gap-3 px-1 text-lg ~py-2.5/3 from-brand-purple to-brand-lime text-white"
               >
+                <div className="flex size-6 items-center justify-center transition-transform group-hover:-rotate-[25deg] [&>svg]:h-full [&>svg]:w-full">
+                  <FaPencil />
+                </div>
+                <div className="w-px self-stretch bg-white/25" />
                 Edit Profile & Username
               </Link>
             </div>
@@ -131,7 +144,7 @@ export default function AccountPage() {
                 <p className="text-gray-600 mb-4">No orders yet</p>
                 <Link
                   href="/build"
-                  className="inline-flex items-center gap-2 rounded-full bg-brand-purple px-6 py-3 font-semibold text-white transition-transform hover:scale-105"
+                  className="button-cutout inline-flex items-center bg-gradient-to-b from-25% to-75% bg-[length:100%_400%] font-bold transition-[filter,background-position] duration-300 hover:bg-bottom px-4 text-lg ~py-2.5/3 from-brand-orange to-brand-lime text-black"
                 >
                   Build Your First Board
                 </Link>
