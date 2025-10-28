@@ -17,15 +17,14 @@ export async function GET() {
 
     await connectToDatabase();
 
-    // Find or create cart for this user
-    let cart = await Cart.findOne({ userId }).lean();
+    // Find cart for this user
+    const cart = await Cart.findOne({ userId }).lean();
 
-    if (!cart) {
-      cart = { userId, items: [] };
-    }
+    // Return cart or empty cart object
+    const cartData = cart || { userId, items: [] };
 
     return NextResponse.json(
-      { success: true, cart },
+      { success: true, cart: cartData },
       { status: 200 }
     );
   } catch (error) {
