@@ -45,15 +45,30 @@ type OrderData = {
 export default function AccountPage() {
   const { user } = useUser();
   const [orders, setOrders] = useState<OrderData[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     if (user) {
-      // Load orders for this user from localStorage
-      const userOrdersKey = `orders_${user.id}`;
-      const storedOrders = localStorage.getItem(userOrdersKey);
-      if (storedOrders) {
-        setOrders(JSON.parse(storedOrders));
-      }
+      // Fetch orders from database
+      const fetchOrders = async () => {
+        try {
+          const response = await fetch("/api/orders");
+          if (response.ok) {
+            const data = await response.json();
+            setOrders(data.orders || []);
+          } else {
+            console.error("Failed to fetch orders");
+          }
+        } catch (error) {
+          console.error("Error fetching orders:", error);
+        } finally {
+          setIsLoading(false);
+        }
+      };
+
+      fetchOrders();
+    } else {
+      setIsLoading(false);
     }
   }, [user]);
 
@@ -139,7 +154,11 @@ export default function AccountPage() {
               </Heading>
             </div>
 
-            {orders.length === 0 ? (
+            {isLoading ? (
+              <div className="text-center py-12">
+                <p className="text-gray-600">Loading orders...</p>
+              </div>
+            ) : orders.length === 0 ? (
               <div className="text-center py-12">
                 <p className="text-gray-600 mb-4">No orders yet</p>
                 <Link

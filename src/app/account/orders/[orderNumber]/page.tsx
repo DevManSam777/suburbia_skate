@@ -51,17 +51,24 @@ export default function OrderDetailsPage() {
 
   useEffect(() => {
     if (user && params.orderNumber) {
-      const userOrdersKey = `orders_${user.id}`;
-      const storedOrders = localStorage.getItem(userOrdersKey);
-      if (storedOrders) {
-        const orders: OrderData[] = JSON.parse(storedOrders);
-        const foundOrder = orders.find(o => o.orderNumber === params.orderNumber);
-        if (foundOrder) {
-          setOrder(foundOrder);
-        } else {
+      // Fetch order from database
+      const fetchOrder = async () => {
+        try {
+          const response = await fetch(`/api/orders/${params.orderNumber}`);
+          if (response.ok) {
+            const data = await response.json();
+            setOrder(data.order);
+          } else {
+            console.error("Failed to fetch order");
+            router.push('/account');
+          }
+        } catch (error) {
+          console.error("Error fetching order:", error);
           router.push('/account');
         }
-      }
+      };
+
+      fetchOrder();
     }
   }, [user, params.orderNumber, router]);
 

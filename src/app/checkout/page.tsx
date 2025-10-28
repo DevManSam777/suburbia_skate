@@ -76,26 +76,34 @@ export default function CheckoutPage() {
         };
         
         console.log("Saving order data:", orderData);
-        
-        // Store order in localStorage for success page
+
+        // Store order in localStorage for immediate success page access
         localStorage.setItem("lastOrder", JSON.stringify(orderData));
-        
-        // If user is logged in, also save to their order history
+
+        // Save order to database if user is logged in
         if (user) {
-          const userOrdersKey = `orders_${user.id}`;
-          const existingOrders = localStorage.getItem(userOrdersKey);
-          const orders = existingOrders ? JSON.parse(existingOrders) : [];
-          orders.unshift(orderData); // Add to beginning of array (most recent first)
-          localStorage.setItem(userOrdersKey, JSON.stringify(orders));
-          console.log("Order saved to user history");
+          try {
+            const saveResponse = await fetch("/api/orders", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify(orderData),
+            });
+
+            if (saveResponse.ok) {
+              console.log("Order saved to database successfully");
+            } else {
+              console.error("Failed to save order to database");
+            }
+          } catch (error) {
+            console.error("Error saving order to database:", error);
+            // Don't block the success flow if database save fails
+          }
         }
-        
-        // Verify it was saved
-        const saved = localStorage.getItem("lastOrder");
-        console.log("Order saved to localStorage:", saved ? "yes" : "no");
-        
-        clearCart();
-        
+
+        await clearCart();
+
         // Use window.location instead of router.push for more reliable navigation
         window.location.href = "/checkout/success";
       } else {
