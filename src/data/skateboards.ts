@@ -17,7 +17,7 @@ export const skateboards: Skateboard[] = [
   {
     id: "oni-mask",
     name: "Oni Mask",
-    price: 5999, // $59.99
+    price: 11999, // $119.99
     reviews: 23,
     image: {
       url: "/images/products/oni-mask.webp",
@@ -31,7 +31,7 @@ export const skateboards: Skateboard[] = [
   {
     id: "pink-drop",
     name: "Pink Drop",
-    price: 8999, // $89.99
+    price: 9999, // $99.99
     reviews: 17,
     image: {
       url: "/images/products/pink-drop.webp",
@@ -45,7 +45,7 @@ export const skateboards: Skateboard[] = [
   {
     id: "thank-you",
     name: "Thank You",
-    price: 6999, // $69.99
+    price: 10999, // $109.99
     reviews: 31,
     image: {
       url: "/images/products/thank-you.webp",
@@ -59,7 +59,7 @@ export const skateboards: Skateboard[] = [
   {
     id: "yellow-black",
     name: "Yellow & Black",
-    price: 7999, // $79.99
+    price: 9999, // $99.99
     reviews: 12,
     image: {
       url: "/images/products/yellow-black.webp",

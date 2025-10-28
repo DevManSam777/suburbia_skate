@@ -10,6 +10,7 @@ export type WheelOption = {
 export type DeckOption = {
   id: string;
   name: string;
+  price: number; // in cents
   texture: {
     url: string;
     alt: string;
@@ -41,17 +42,17 @@ export const customizerSettings: CustomizerSettings = {
     { id: "pink", name: "Pink", texture: { url: "/skateboard/wheels/pink.png", alt: "Pink wheels" } },
   ],
   decks: [
-    { id: "oni-mask", name: "Oni mask", texture: { url: "/skateboard/decks/oni-mask.webp", alt: "Oni mask deck" } },
-    { id: "grid-streaks", name: "Grid streaks", texture: { url: "/skateboard/decks/grid-streaks.webp", alt: "Grid streaks deck" } },
-    { id: "branches", name: "Branches", texture: { url: "/skateboard/decks/branches.webp", alt: "Branches deck" } },
-    { id: "thank-you", name: "Thank you", texture: { url: "/skateboard/decks/thank-you.webp", alt: "Thank you deck" } },
-    { id: "pink-swirl", name: "Pink swirl", texture: { url: "/skateboard/decks/pink-swirl.webp", alt: "Pink swirl deck" } },
-    { id: "green-navy", name: "Green and navy", texture: { url: "/skateboard/decks/green-navy.webp", alt: "Green and navy deck" } },
-    { id: "black-yellow", name: "Black and yellow", texture: { url: "/skateboard/decks/black-yellow.webp", alt: "Black and yellow deck" } },
-    { id: "yellow-black", name: "Yellow and black", texture: { url: "/skateboard/decks/yellow-black.webp", alt: "Yellow and black deck" } },
-    { id: "red-black", name: "Red and black", texture: { url: "/skateboard/decks/red-black.webp", alt: "Red and black deck" } },
-    { id: "red-white", name: "Red and white", texture: { url: "/skateboard/decks/red-white.webp", alt: "Red and white deck" } },
-    { id: "gray-black", name: "Gray and black", texture: { url: "/skateboard/decks/gray-black.webp", alt: "Gray and black deck" } },
+    { id: "oni-mask", name: "Oni mask", price: 11999, texture: { url: "/skateboard/decks/oni-mask.webp", alt: "Oni mask deck" } },
+    { id: "grid-streaks", name: "Grid streaks", price: 9999, texture: { url: "/skateboard/decks/grid-streaks.webp", alt: "Grid streaks deck" } },
+    { id: "branches", name: "Branches", price: 9999, texture: { url: "/skateboard/decks/branches.webp", alt: "Branches deck" } },
+    { id: "thank-you", name: "Thank you", price: 10999, texture: { url: "/skateboard/decks/thank-you.webp", alt: "Thank you deck" } },
+    { id: "pink-swirl", name: "Pink swirl", price: 9999, texture: { url: "/skateboard/decks/pink-swirl.webp", alt: "Pink swirl deck" } },
+    { id: "green-navy", name: "Green and navy", price: 9999, texture: { url: "/skateboard/decks/green-navy.webp", alt: "Green and navy deck" } },
+    { id: "black-yellow", name: "Black and yellow", price: 9999, texture: { url: "/skateboard/decks/black-yellow.webp", alt: "Black and yellow deck" } },
+    { id: "yellow-black", name: "Yellow and black", price: 9999, texture: { url: "/skateboard/decks/yellow-black.webp", alt: "Yellow and black deck" } },
+    { id: "red-black", name: "Red and black", price: 9999, texture: { url: "/skateboard/decks/red-black.webp", alt: "Red and black deck" } },
+    { id: "red-white", name: "Red and white", price: 9999, texture: { url: "/skateboard/decks/red-white.webp", alt: "Red and white deck" } },
+    { id: "gray-black", name: "Gray and black", price: 9999, texture: { url: "/skateboard/decks/gray-black.webp", alt: "Gray and black deck" } },
   ],
   metals: [
     { id: "black", name: "Black", color: "#000000" },

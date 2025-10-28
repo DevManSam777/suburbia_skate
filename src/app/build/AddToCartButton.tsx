@@ -5,8 +5,6 @@ import { FaPlus } from "react-icons/fa6";
 import { useCart } from "@/context/CartContext";
 import { useCustomizerControls } from "./context";
 
-const BASE_PRICE = 7999; // $79.99 in cents
-
 export default function AddToCartButton() {
   const router = useRouter();
   const { addItem } = useCart();
@@ -41,7 +39,7 @@ export default function AddToCartButton() {
         name: selectedBolt.name,
         color: selectedBolt.color,
       },
-      price: BASE_PRICE,
+      price: selectedDeck.price,
     });
 
     // Redirect to home page after adding to cart
