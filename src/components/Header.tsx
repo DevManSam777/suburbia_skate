@@ -7,6 +7,7 @@ import { SignedIn, SignedOut, SignOutButton, useUser } from "@clerk/nextjs";
 import { Logo } from "./Logo";
 import { settings } from "@/data/settings";
 import { CartButton } from "./CartButton";
+import { FaUser } from "react-icons/fa6";
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -49,9 +50,10 @@ export function Header() {
                 <li>
                   <Link
                     href="/account"
-                    className="text-base hover:text-brand-purple transition-colors"
+                    className="inline-flex items-center gap-2 text-base hover:text-brand-purple transition-colors"
                     title="View Account"
                   >
+                    <FaUser className="text-xs" />
                     Hi,&nbsp;{firstName}
                   </Link>
                 </li>
@@ -120,10 +122,11 @@ export function Header() {
                 <li>
                   <Link
                     href="/account"
-                    className="text-lg hover:text-brand-purple transition-colors block py-2"
+                    className="inline-flex items-center gap-2 text-lg hover:text-brand-purple transition-colors py-2"
                     title="View Account"
                     onClick={() => setIsMenuOpen(false)}
                   >
+                    <FaUser className="text-sm" />
                     Hi,&nbsp;{firstName}
                   </Link>
                 </li>
