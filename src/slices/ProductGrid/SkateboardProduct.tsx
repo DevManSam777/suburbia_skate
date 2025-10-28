@@ -16,6 +16,13 @@ const VERTICAL_LINE_CLASSES =
 const HORIZONTAL_LINE_CLASSES =
   "-mx-8 stroke-2 text-stone-300 transition-colors group-hover:text-stone-400";
 
+const SCRIBBLE_COLORS: Record<string, string> = {
+  "oni-mask": "#f97316", // orange
+  "pink-drop": "#ec4899", // pink
+  "thank-you": "#ef4444", // red
+  "yellow-black": "#eab308", // yellow
+};
+
 export function SkateboardProduct({ id }: Props) {
   const product = skateboards.find((p) => p.id === id);
 
@@ -24,6 +31,7 @@ export function SkateboardProduct({ id }: Props) {
   }
 
   const price = `$${(product.price / 100).toFixed(2)}`;
+  const scribbleColor = SCRIBBLE_COLORS[id] || "#d6d3d1";
 
   return (
     <div className="group relative mx-auto w-full max-w-72 px-8 pt-4 ">
@@ -40,7 +48,7 @@ export function SkateboardProduct({ id }: Props) {
       <div className="-mb-1 overflow-hidden py-4">
         <Scribble
           className="absolute inset-0 h-full w-full"
-          color={undefined}
+          color={scribbleColor}
         />
         <Image
           src={product.image.url}

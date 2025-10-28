@@ -36,10 +36,14 @@ export const settings: Settings = {
     },
   ],
   footer_skateboards: [
-    "/images/products/oni-mask.webp",
-    "/images/products/pink-drop.webp",
-    "/images/products/thank-you.webp",
-    "/images/products/yellow-black.webp",
+    "/images/products/oni-mask-new.webp",
+    "/images/products/pink-drop-new.webp",
+    "/images/products/gray-black.webp",
+    "/images/products/thank-you-new.webp",
+    "/images/products/black-yellow.webp",
+    "/images/products/grid-streaks.webp",
+    "/images/products/green-navy.webp",
+    "/images/products/red-white.webp",
   ],
   footer_image: {
     url: "/images/backgrounds/footer-bg.webp",

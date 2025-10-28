@@ -26,14 +26,23 @@ export function FooterPhysics({
   const engine = useRef(Engine.create());
   // Intersection Observer state
   const [inView, setInView] = useState(false);
-  // We show fewer boards on mobile
-  const [isMobile, setIsMobile] = useState(false);
+  // Number of boards based on screen size
+  const [boardCount, setBoardCount] = useState(8);
 
-  // Handle mobile detection
+  // Handle responsive board count (but never exceed available unique boards)
   useEffect(() => {
     const handleResize = () => {
       if (typeof window !== "undefined") {
-        setIsMobile(window.matchMedia("(max-width: 768px)").matches);
+        const width = window.innerWidth;
+        const maxBoards = boardTextureURLs.length; // Only show unique boards
+
+        if (width < 640) {
+          setBoardCount(Math.min(6, maxBoards)); // Mobile
+        } else if (width < 1024) {
+          setBoardCount(Math.min(7, maxBoards)); // Tablet
+        } else {
+          setBoardCount(maxBoards); // Desktop - show all unique boards
+        }
       }
     };
 
@@ -43,12 +52,10 @@ export function FooterPhysics({
     return () => {
       window.removeEventListener("resize", handleResize);
     };
-  }, []);
+  }, [boardTextureURLs.length]);
 
-  // Fewer boards on mobile
-  const limitedBoardTextures = isMobile
-    ? boardTextureURLs.slice(0, 3)
-    : boardTextureURLs;
+  // Only show unique boards, no duplicates
+  const limitedBoardTextures = boardTextureURLs.slice(0, boardCount);
 
   // Intersection Observer to start/stop the physics simulation
   useEffect(() => {
@@ -181,16 +188,16 @@ export function FooterPhysics({
       const y = Math.random() * (ch / 2 - 100) + 50;
       const rotation = ((Math.random() * 100 - 50) * Math.PI) / 180;
 
-      return Bodies.rectangle(x, y, 80, 285, {
-        chamfer: { radius: 40 }, // Rounded corners for accurate collision
+      return Bodies.rectangle(x, y, 40, 140, {
+        chamfer: { radius: 20 }, // Rounded corners for accurate collision
         angle: rotation,
         restitution: 0.8, // Bounciness
         friction: 0.005, // minimal friction
         render: {
           sprite: {
             texture,
-            xScale: 0.5, // Scale texture down
-            yScale: 0.5,
+            xScale: 0.25, // Scale texture down to 25%
+            yScale: 0.25,
           },
         },
       });

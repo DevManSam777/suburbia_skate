@@ -200,10 +200,10 @@ export const homepage: Homepage = {
     },
     {
       slice_type: 'about',
-      heading: "About Suburbia Skate",
+      heading: "About",
       body: [
-        { type: 'paragraph', text: "Born from the concrete jungles and suburban streets, Suburbia Skate is more than just a skateboard company. We're a movement of riders who refuse to be confined by the ordinary." },
-        { type: 'paragraph', text: "Every board we craft is designed with passion, built for performance, and made to express your unique style. Whether you're grinding rails in the city or cruising through your neighborhood, Suburbia Skate has your back." },
+        { type: 'paragraph', text: "Born from the concrete jungles and suburban streets, Suburbia Skate is more than just a skateboard company. We're a movement of riders who refuse to be confined by the ordinary.", emphasis: "Suburbia Skate" },
+        { type: 'paragraph', text: "Every board we craft is designed with passion, built for performance, and made to express your unique style. Whether you're grinding rails in the city or cruising through your neighborhood, Suburbia Skate has your back.", emphasis: "Suburbia Skate" },
         { type: 'paragraph', text: "Join our community of skaters who are redefining what it means to escape the cul-de-sac." }
       ]
     }
