@@ -29,7 +29,7 @@ const TextAndImage = ({ slice, index }: TextAndImageProps): JSX.Element => {
     <Bounded
       data-slice-type={slice.slice_type}
       className={clsx(
-        "sticky top-[calc(var(--index)*2rem)] min-h-screen flex items-center",
+        "sticky top-[calc(var(--index)*2rem)] min-h-screen flex items-center relative z-10",
         theme === "Blue" && "bg-texture bg-brand-blue text-white",
         theme === "Orange" && "bg-texture bg-brand-orange text-white",
         theme === "Navy" && "bg-texture bg-brand-navy text-white",
@@ -44,19 +44,19 @@ const TextAndImage = ({ slice, index }: TextAndImageProps): JSX.Element => {
             slice.variation === "imageOnLeft" && "md:order-2"
           )}
         >
-          <SlideIn>
+          <SlideIn delay={0}>
             <Heading size="lg" as="h2" className="break-words hyphens-auto ~text-3xl/7xl">
               {slice.heading}
             </Heading>
           </SlideIn>
-          <SlideIn>
+          <SlideIn delay={0.2}>
             <div className="max-w-md text-lg leading-relaxed">
               {slice.body.map((paragraph, index) => (
                 <p key={index}>{paragraph.text}</p>
               ))}
             </div>
           </SlideIn>
-          <SlideIn>
+          <SlideIn delay={0.4}>
             <Link
               href={slice.button.url}
               className={clsx(
@@ -65,6 +65,8 @@ const TextAndImage = ({ slice, index }: TextAndImageProps): JSX.Element => {
                   ? "from-brand-purple to-brand-orange text-white"
                   : theme === "Orange"
                   ? "from-brand-blue to-brand-lime text-white"
+                  : theme === "Navy"
+                  ? "from-brand-lime to-brand-purple text-white"
                   : "from-brand-orange to-brand-lime text-black"
               )}
             >
