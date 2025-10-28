@@ -62,11 +62,11 @@ const TextAndImage = ({ slice, index }: TextAndImageProps): JSX.Element => {
               className={clsx(
                 "button-cutout inline-flex items-center bg-gradient-to-b from-25% to-75% bg-[length:100%_400%] font-bold transition-[filter,background-position] duration-300 hover:bg-bottom px-4 text-lg ~py-2.5/3",
                 theme === "Lime"
-                  ? "from-brand-purple to-brand-orange text-white"
+                  ? "from-brand-purple to-brand-orange text-black"
                   : theme === "Orange"
-                  ? "from-brand-blue to-brand-lime text-white"
+                  ? "from-brand-blue to-brand-lime text-black"
                   : theme === "Navy"
-                  ? "from-brand-lime to-brand-purple text-white"
+                  ? "from-brand-lime to-brand-purple text-black"
                   : "from-brand-orange to-brand-lime text-black"
               )}
             >
