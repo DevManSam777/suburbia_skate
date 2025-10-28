@@ -234,7 +234,7 @@ export default function OrderDetailsPage() {
           {/* Footer Note */}
           <div className="text-center text-sm text-gray-600 print:hidden">
             <p>Thank you for your order!</p>
-            <p className="mt-2">Questions? Contact us at support@suburbiaSkate.com</p>
+            <p className="mt-2">Questions? Contact us at support@suburbiaskate.com</p>
           </div>
         </div>
       </Bounded>
