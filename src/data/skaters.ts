@@ -33,7 +33,7 @@ export const skaters: Skater[] = [
     },
     customizer_link: {
       url: "/build?deck=yellow-black",
-      text: "Build their board",
+      text: "Build Sophie's Board",
     },
   },
   {
@@ -51,7 +51,7 @@ export const skaters: Skater[] = [
     },
     customizer_link: {
       url: "/build?deck=grid-streaks&wheel=yellow",
-      text: "Build their board",
+      text: "Build Dylan's Board",
     },
   },
   {
@@ -69,7 +69,7 @@ export const skaters: Skater[] = [
     },
     customizer_link: {
       url: "/build?deck=pink-swirl&wheel=blue",
-      text: "Build their board",
+      text: "Build Carter's Board",
     },
   },
   {
@@ -87,7 +87,7 @@ export const skaters: Skater[] = [
     },
     customizer_link: {
       url: "/build?deck=red-black&truck=silver",
-      text: "Build their board",
+      text: "Build Jordan's Board",
     },
   },
 ];

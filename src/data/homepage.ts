@@ -171,7 +171,7 @@ export const homepage: Homepage = {
     },
     {
       slice_type: 'text_and_image',
-      heading: "Inspiring the Next Wave",
+      heading: "The Next Wave",
       body: [
         { type: 'paragraph', text: "Inspiring young skaters to push their limits. Join the movement and show us what you've got." }
       ],

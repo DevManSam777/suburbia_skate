@@ -63,7 +63,7 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
           </div>
           <Link
             href={slice.button.url}
-            className="button-cutout group z-20 mt-2 inline-flex items-center bg-gradient-to-b from-25% to-75% bg-[length:100%_400%] font-bold transition-[filter,background-position] duration-300 hover:bg-bottom gap-4 px-2 ~text-lg/xl ~py-3/4 from-brand-orange to-brand-lime text-black"
+            className="button-cutout group z-20 mt-2 inline-flex items-center bg-gradient-to-b from-25% to-75% bg-[length:100%_400%] font-bold transition-[filter,background-position] duration-300 hover:bg-bottom gap-4 px-2 ~text-lg/xl ~py-3/4 from-brand-orange to-brand-lime text-black md:mr-4"
           >
             <div className="flex ~size-6/8 items-center justify-center transition-transform group-hover:-rotate-[25deg]">
               <SkateboardIcon className="h-full w-full" />

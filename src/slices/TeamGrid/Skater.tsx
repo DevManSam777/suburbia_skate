@@ -64,7 +64,7 @@ export function Skater({ skater, index }: Props) {
       </div>
       <Link
         href={skater.customizer_link.url}
-        className="button-cutout inline-flex items-center bg-gradient-to-b from-25% to-75% bg-[length:100%_400%] font-bold transition-[filter,background-position] duration-300 hover:bg-bottom px-4 text-sm py-2 from-brand-orange to-brand-lime text-black"
+        className="button-cutout inline-flex items-center bg-gradient-to-b from-25% to-75% bg-[length:100%_400%] font-bold transition-[filter,background-position] duration-300 hover:bg-bottom ~px-0/2 ~text-[0.5rem]/xs py-2 from-brand-orange to-brand-lime text-black whitespace-nowrap max-w-full"
       >
         {skater.customizer_link.text}
       </Link>

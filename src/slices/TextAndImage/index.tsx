@@ -60,7 +60,7 @@ const TextAndImage = ({ slice, index }: TextAndImageProps): JSX.Element => {
             <Link
               href={slice.button.url}
               className={clsx(
-                "button-cutout inline-flex items-center bg-gradient-to-b from-25% to-75% bg-[length:100%_400%] font-bold transition-[filter,background-position] duration-300 hover:bg-bottom px-4 text-lg ~py-2.5/3",
+                "button-cutout inline-flex items-center bg-gradient-to-b from-25% to-75% bg-[length:100%_400%] font-bold transition-[filter,background-position] duration-300 hover:bg-bottom px-4 text-lg ~py-2.5/3 ml-4",
                 theme === "Lime"
                   ? "from-brand-purple to-brand-orange text-black"
                   : theme === "Orange"
