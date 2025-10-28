@@ -93,7 +93,7 @@ export default function OrderDetailsPage() {
           <div className="flex justify-between items-center mb-6 print:hidden">
             <Link
               href="/account"
-              className="inline-flex items-center gap-2 text-brand-purple hover:underline font-semibold text-lg"
+              className="inline-flex items-center gap-2 text-gray-700 hover:text-brand-purple transition-colors font-semibold"
             >
               <FaArrowLeft />
               <span>Back to Account</span>
