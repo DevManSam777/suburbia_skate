@@ -9,7 +9,8 @@ import { Heading } from "@/components/Heading";
 import { useCart } from "@/context/CartContext";
 import Image from "next/image";
 import toast from "react-hot-toast";
-import { FaCopy, FaCheck } from "react-icons/fa6";
+import { FaCopy, FaCheck, FaArrowLeft } from "react-icons/fa6";
+import Link from "next/link";
 
 export default function CheckoutPage() {
   const router = useRouter();
@@ -161,6 +162,15 @@ export default function CheckoutPage() {
     >
       <div className="min-h-screen bg-texture bg-brand-gray py-12">
         <Bounded>
+          {/* Back to Cart Link */}
+          <Link
+            href="/cart"
+            className="inline-flex items-center gap-2 text-gray-700 hover:text-brand-purple transition-colors mb-6"
+          >
+            <FaArrowLeft />
+            <span className="font-semibold">Back to Cart</span>
+          </Link>
+
           <Heading className="mb-8" as="h1">
             Checkout
           </Heading>
