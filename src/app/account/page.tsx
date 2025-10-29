@@ -98,16 +98,16 @@ export default function AccountPage() {
           </Link>
 
           {/* Profile Header */}
-          <div className="bg-white rounded-lg shadow-md p-8 mb-6">
-            <div className="flex items-center gap-6 mb-6">
-              <div className="w-16 h-16 bg-brand-purple rounded-full flex items-center justify-center text-white text-2xl">
+          <div className="bg-white rounded-lg shadow-md p-4 md:p-8 mb-6">
+            <div className="flex items-center gap-4 md:gap-6 mb-6">
+              <div className="w-12 h-12 md:w-16 md:h-16 bg-brand-purple rounded-full flex items-center justify-center text-white text-xl md:text-2xl flex-shrink-0">
                 <FaUser />
               </div>
-              <div>
-                <Heading className="mb-2" as="h1">
+              <div className="min-w-0 flex-1">
+                <Heading className="mb-2 text-xl md:text-2xl lg:text-3xl" as="h1">
                   {user.fullName || user.username || "Welcome"}
                 </Heading>
-                <p className="text-gray-600">{user.primaryEmailAddress?.emailAddress}</p>
+                <p className="text-gray-600 text-sm md:text-base break-all">{user.primaryEmailAddress?.emailAddress}</p>
               </div>
             </div>
 
@@ -134,22 +134,22 @@ export default function AccountPage() {
             <div className="mt-6">
               <Link
                 href="/account/profile"
-                className="button-cutout group inline-flex items-center bg-gradient-to-b from-25% to-75% bg-[length:100%_400%] font-bold transition-[filter,background-position] duration-300 hover:bg-bottom gap-3 px-1 text-lg ~py-2.5/3 from-brand-purple to-brand-lime text-white"
+                className="button-cutout group inline-flex items-center bg-gradient-to-b from-25% to-75% bg-[length:100%_400%] font-bold transition-[filter,background-position] duration-300 hover:bg-bottom gap-2 md:gap-3 px-1 text-sm md:text-lg py-2 md:~py-2.5/3 from-brand-purple to-brand-lime text-white"
               >
-                <div className="flex size-6 items-center justify-center transition-transform group-hover:-rotate-[25deg] [&>svg]:h-full [&>svg]:w-full">
+                <div className="flex size-5 md:size-6 items-center justify-center transition-transform group-hover:-rotate-[25deg] [&>svg]:h-full [&>svg]:w-full">
                   <FaPencil />
                 </div>
                 <div className="w-px self-stretch bg-white/25" />
-                Edit Profile & Username
+                <span className="truncate">Edit Profile & Username</span>
               </Link>
             </div>
           </div>
 
           {/* Order History */}
-          <div className="bg-white rounded-lg shadow-md p-8">
+          <div className="bg-white rounded-lg shadow-md p-4 md:p-8">
             <div className="flex items-center gap-3 mb-6">
-              <FaBox className="text-brand-purple text-2xl" />
-              <Heading className="" as="h2">
+              <FaBox className="text-brand-purple text-xl md:text-2xl" />
+              <Heading className="text-xl md:text-2xl" as="h2">
                 Order History
               </Heading>
             </div>
@@ -176,10 +176,10 @@ export default function AccountPage() {
                     href={`/account/orders/${order.orderNumber}`}
                     className="block border-b last:border-b-0 pb-6 last:pb-0 hover:bg-gray-50 -mx-4 px-4 py-4 rounded transition-colors cursor-pointer"
                   >
-                    <div className="flex justify-between items-start mb-4">
-                      <div>
-                        <p className="font-bold text-lg font-mono">{order.orderNumber}</p>
-                        <p className="text-sm text-gray-600">
+                    <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-3 mb-4">
+                      <div className="min-w-0 flex-1">
+                        <p className="font-bold text-base md:text-lg font-mono break-all">{order.orderNumber}</p>
+                        <p className="text-xs md:text-sm text-gray-600 break-words">
                           {new Date(order.timestamp).toLocaleDateString("en-US", {
                             year: "numeric",
                             month: "long",
@@ -189,18 +189,18 @@ export default function AccountPage() {
                           })}
                         </p>
                       </div>
-                      <div className="text-right">
-                        <p className="font-bold text-lg text-green-600">
+                      <div className="sm:text-right flex-shrink-0">
+                        <p className="font-bold text-base md:text-lg text-green-600">
                           ${(order.total / 100).toFixed(2)}
                         </p>
-                        <p className="text-sm text-gray-600">Paid via PayPal</p>
+                        <p className="text-xs md:text-sm text-gray-600">Paid via PayPal</p>
                       </div>
                     </div>
 
                     <div className="grid gap-3">
                       {order.items.map((item, itemIndex) => (
-                        <div key={itemIndex} className="flex gap-4 items-center">
-                          <div className="relative w-12 h-12 flex-shrink-0">
+                        <div key={itemIndex} className="flex gap-2 sm:gap-3 md:gap-4 items-center">
+                          <div className="relative w-10 h-10 md:w-12 md:h-12 flex-shrink-0">
                             <Image
                               src={item.deck.texture}
                               alt={item.deck.name}
@@ -208,22 +208,22 @@ export default function AccountPage() {
                               className="object-contain rounded"
                             />
                           </div>
-                          <div className="flex-grow">
-                            <p className="font-semibold text-sm">Custom Skateboard</p>
-                            <p className="text-xs text-gray-600">
+                          <div className="flex-grow min-w-0">
+                            <p className="font-semibold text-xs md:text-sm break-words">Custom Skateboard</p>
+                            <p className="text-[10px] sm:text-xs text-gray-600 truncate">
                               {item.deck.name} • {item.wheel.name}
                             </p>
                           </div>
-                          <div className="text-right">
-                            <p className="text-sm">Qty: {item.quantity}</p>
-                            <p className="text-sm font-semibold">
+                          <div className="text-right flex-shrink-0 min-w-[55px] sm:min-w-[60px]">
+                            <p className="text-[10px] sm:text-xs md:text-sm whitespace-nowrap">× {item.quantity}</p>
+                            <p className="text-[10px] sm:text-xs md:text-sm font-semibold whitespace-nowrap">
                               ${((item.price * item.quantity) / 100).toFixed(2)}
                             </p>
                           </div>
                         </div>
                       ))}
                     </div>
-                    <div className="mt-3 text-sm text-brand-purple font-semibold">
+                    <div className="mt-3 text-xs md:text-sm text-brand-purple font-semibold">
                       Click to view invoice →
                     </div>
                   </Link>

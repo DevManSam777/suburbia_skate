@@ -108,9 +108,9 @@ export default function OrderDetailsPage() {
             <button
               type="button"
               onClick={() => window.print()}
-              className="button-cutout group inline-flex items-center bg-gradient-to-b from-25% to-75% bg-[length:100%_400%] font-bold transition-[filter,background-position] duration-300 hover:bg-bottom gap-3 px-1 text-lg ~py-2.5/3 from-brand-purple to-brand-lime text-white cursor-pointer"
+              className="button-cutout group inline-flex items-center bg-gradient-to-b from-25% to-75% bg-[length:100%_400%] font-bold transition-[filter,background-position] duration-300 hover:bg-bottom gap-2 md:gap-3 px-1 text-sm md:text-lg py-2 md:~py-2.5/3 from-brand-purple to-brand-lime text-white cursor-pointer"
             >
-              <div className="flex size-6 items-center justify-center transition-transform group-hover:-rotate-[25deg] [&>svg]:h-full [&>svg]:w-full">
+              <div className="flex size-5 md:size-6 items-center justify-center transition-transform group-hover:-rotate-[25deg] [&>svg]:h-full [&>svg]:w-full">
                 <FaPrint />
               </div>
               <div className="w-px self-stretch bg-white/25" />
@@ -119,17 +119,17 @@ export default function OrderDetailsPage() {
           </div>
 
           {/* Invoice Card */}
-          <div className="bg-white rounded-lg shadow-md p-8 mb-6">
+          <div className="bg-white rounded-lg shadow-md p-4 md:p-8 mb-6">
             {/* Invoice Header */}
-            <div className="flex justify-between items-start mb-8 pb-6 border-b-2 border-gray-300">
+            <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-4 mb-8 pb-6 border-b-2 border-gray-300">
               <div>
                 <h1 className="text-3xl font-bold text-brand-purple mb-2">INVOICE</h1>
                 <p className="text-sm text-gray-600">Suburbia Skate Co.</p>
               </div>
-              <div className="text-right">
+              <div className="md:text-right">
                 <p className="text-sm text-gray-600 mb-1">Order Number</p>
-                <p className="font-bold text-lg font-mono">{order.orderNumber}</p>
-                <p className="text-sm text-gray-600 mt-2">{orderDate}</p>
+                <p className="font-bold text-lg font-mono break-all">{order.orderNumber}</p>
+                <p className="text-sm text-gray-600 mt-2 break-words">{orderDate}</p>
               </div>
             </div>
 
@@ -142,7 +142,7 @@ export default function OrderDetailsPage() {
                     {order.payerInfo.name?.given_name} {order.payerInfo.name?.surname}
                   </p>
                   {order.payerInfo.email_address && (
-                    <p className="text-sm text-gray-600">{order.payerInfo.email_address}</p>
+                    <p className="text-sm text-gray-600 break-all">{order.payerInfo.email_address}</p>
                   )}
                 </div>
               )}
@@ -162,7 +162,7 @@ export default function OrderDetailsPage() {
               <div>
                 <h3 className="font-bold text-sm text-gray-600 mb-2">PAYMENT METHOD</h3>
                 <p className="font-semibold">PayPal</p>
-                <p className="text-xs text-gray-500 mt-1">Transaction ID: {order.paypalOrderId}</p>
+                <p className="text-xs text-gray-500 mt-1 break-all">Transaction ID: {order.paypalOrderId}</p>
               </div>
               <div>
                 <h3 className="font-bold text-sm text-gray-600 mb-2">PAYMENT STATUS</h3>
@@ -176,7 +176,57 @@ export default function OrderDetailsPage() {
             {/* Order Items - Invoice Table */}
             <div>
               <h2 className="font-bold text-lg mb-4 text-gray-700">ITEMS</h2>
-              <table className="w-full">
+
+              {/* Mobile Card Layout */}
+              <div className="md:hidden space-y-4">
+                {order.items.map((item, index) => (
+                  <div key={index} className="border border-gray-200 rounded p-4">
+                    <div className="flex items-start gap-3 mb-3">
+                      <div className="relative w-16 h-16 flex-shrink-0">
+                        <Image
+                          src={item.deck.texture}
+                          alt={item.deck.name}
+                          fill
+                          className="object-contain rounded"
+                        />
+                      </div>
+                      <div className="flex-1">
+                        <p className="font-semibold mb-2">Custom Skateboard</p>
+                        <div className="text-xs text-gray-600 space-y-1">
+                          <p>Deck: {item.deck.name}</p>
+                          <p>Wheels: {item.wheel.name}</p>
+                          <p>Trucks: {item.truck.name}</p>
+                          <p>Bolts: {item.bolt.name}</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="flex justify-between text-sm pt-3 border-t border-gray-200">
+                      <span className="text-gray-600">Qty: {item.quantity}</span>
+                      <span className="text-gray-600">${(item.price / 100).toFixed(2)} each</span>
+                      <span className="font-semibold">${((item.price * item.quantity) / 100).toFixed(2)}</span>
+                    </div>
+                  </div>
+                ))}
+
+                {/* Mobile Totals */}
+                <div className="border-t-2 border-gray-300 pt-4 space-y-2">
+                  <div className="flex justify-between">
+                    <span className="font-semibold">SUBTOTAL:</span>
+                    <span>${(order.total / 100).toFixed(2)}</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="font-semibold">SHIPPING:</span>
+                    <span className="text-green-600">FREE</span>
+                  </div>
+                  <div className="flex justify-between text-lg pt-2 border-t border-gray-300">
+                    <span className="font-bold">TOTAL PAID:</span>
+                    <span className="font-bold text-green-600">${(order.total / 100).toFixed(2)}</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Desktop Table Layout */}
+              <table className="w-full hidden md:table">
                 <thead className="border-b-2 border-gray-300">
                   <tr className="text-left text-sm text-gray-600">
                     <th className="pb-3">ITEM</th>
