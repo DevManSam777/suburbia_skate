@@ -26,9 +26,9 @@ export default function CartPage() {
           <div className="space-y-4">
             <Link
               href="/#products"
-              className="button-cutout group inline-flex items-center bg-gradient-to-b from-25% to-75% bg-[length:100%_400%] font-bold transition-[filter,background-position] duration-300 hover:bg-bottom gap-3 px-1 text-lg ~py-2.5/3 from-brand-purple to-brand-lime text-white"
+              className="button-cutout group inline-flex items-center bg-gradient-to-b from-25% to-75% bg-[length:100%_400%] font-bold transition-[filter,background-position] duration-300 hover:bg-bottom gap-2 md:gap-3 px-1 text-sm md:text-lg py-2 md:~py-2.5/3 from-brand-purple to-brand-lime text-white"
             >
-              <div className="flex size-6 items-center justify-center transition-transform group-hover:-rotate-[25deg] [&>svg]:h-full [&>svg]:w-full">
+              <div className="flex size-5 md:size-6 items-center justify-center transition-transform group-hover:-rotate-[25deg] [&>svg]:h-full [&>svg]:w-full">
                 <FaCartShopping />
               </div>
               <div className="w-px self-stretch bg-white/25" />
@@ -53,10 +53,10 @@ export default function CartPage() {
             {items.map((item) => (
               <div
                 key={item.id}
-                className="bg-white rounded-lg shadow-md p-6 flex gap-6"
+                className="bg-white rounded-lg shadow-md p-4 md:p-6 flex gap-3 md:gap-6"
               >
                 {/* Deck Preview */}
-                <div className="relative w-24 h-24 flex-shrink-0">
+                <div className="relative w-16 h-16 md:w-24 md:h-24 flex-shrink-0">
                   <Image
                     src={item.deck.texture}
                     alt={item.deck.name}
@@ -66,40 +66,40 @@ export default function CartPage() {
                 </div>
 
                 {/* Item Details */}
-                <div className="flex-grow">
-                  <h3 className="font-bold text-lg mb-2">
+                <div className="flex-grow min-w-0">
+                  <h3 className="font-bold text-base md:text-lg mb-2">
                     Custom Skateboard
                   </h3>
-                  <div className="text-sm text-gray-600 space-y-1">
-                    <p>
+                  <div className="text-xs md:text-sm text-gray-600 space-y-1">
+                    <p className="break-words">
                       <span className="font-semibold">Deck:</span> {item.deck.name}
                     </p>
-                    <p>
+                    <p className="break-words">
                       <span className="font-semibold">Wheels:</span> {item.wheel.name}
                     </p>
-                    <p>
+                    <p className="break-words">
                       <span className="font-semibold">Trucks:</span> {item.truck.name}
                     </p>
-                    <p>
+                    <p className="break-words">
                       <span className="font-semibold">Bolts:</span> {item.bolt.name}
                     </p>
                   </div>
 
-                  <div className="flex items-center gap-4 mt-4">
+                  <div className="flex flex-wrap items-center gap-2 md:gap-4 mt-3 md:mt-4">
                     {/* Quantity Controls */}
                     <div className="flex items-center gap-2">
                       <button
                         onClick={() => updateQuantity(item.id, item.quantity - 1)}
-                        className="w-8 h-8 rounded-full bg-gray-200 hover:bg-gray-300 flex items-center justify-center"
+                        className="w-7 h-7 md:w-8 md:h-8 rounded-full bg-gray-200 hover:bg-gray-300 flex items-center justify-center text-sm md:text-base"
                       >
                         −
                       </button>
-                      <span className="w-8 text-center font-semibold">
+                      <span className="w-6 md:w-8 text-center font-semibold text-sm md:text-base">
                         {item.quantity}
                       </span>
                       <button
                         onClick={() => updateQuantity(item.id, item.quantity + 1)}
-                        className="w-8 h-8 rounded-full bg-gray-200 hover:bg-gray-300 flex items-center justify-center"
+                        className="w-7 h-7 md:w-8 md:h-8 rounded-full bg-gray-200 hover:bg-gray-300 flex items-center justify-center text-sm md:text-base"
                       >
                         +
                       </button>
@@ -107,11 +107,11 @@ export default function CartPage() {
 
                     {/* Price */}
                     <div className="ml-auto text-right">
-                      <p className="font-bold text-lg">
+                      <p className="font-bold text-base md:text-lg whitespace-nowrap">
                         ${((item.price * item.quantity) / 100).toFixed(2)}
                       </p>
                       {item.quantity > 1 && (
-                        <p className="text-sm text-gray-500">
+                        <p className="text-xs md:text-sm text-gray-500 whitespace-nowrap">
                           ${(item.price / 100).toFixed(2)} each
                         </p>
                       )}
@@ -120,7 +120,7 @@ export default function CartPage() {
                     {/* Remove Button */}
                     <button
                       onClick={() => removeItem(item.id)}
-                      className="text-red-500 hover:text-red-700 p-2"
+                      className="text-red-500 hover:text-red-700 p-1.5 md:p-2 text-sm md:text-base"
                       aria-label="Remove item"
                     >
                       <FaTrash />
@@ -133,19 +133,19 @@ export default function CartPage() {
 
           {/* Order Summary */}
           <div className="lg:col-span-1">
-            <div className="bg-white rounded-lg shadow-md p-6 sticky top-6">
-              <h2 className="font-bold text-xl mb-4">Order Summary</h2>
+            <div className="bg-white rounded-lg shadow-md p-4 md:p-6 sticky top-6">
+              <h2 className="font-bold text-lg md:text-xl mb-4">Order Summary</h2>
 
               <div className="space-y-2 mb-4">
-                <div className="flex justify-between">
+                <div className="flex justify-between text-sm md:text-base">
                   <span>Subtotal</span>
                   <span>${(totalPrice / 100).toFixed(2)}</span>
                 </div>
-                <div className="flex justify-between">
+                <div className="flex justify-between text-sm md:text-base">
                   <span>Shipping</span>
                   <span className="text-green-600">FREE</span>
                 </div>
-                <div className="border-t pt-2 flex justify-between font-bold text-lg">
+                <div className="border-t pt-2 flex justify-between font-bold text-base md:text-lg">
                   <span>Total</span>
                   <span>${(totalPrice / 100).toFixed(2)}</span>
                 </div>
@@ -153,9 +153,9 @@ export default function CartPage() {
 
               <Link
                 href="/checkout"
-                className="button-cutout group inline-flex items-center bg-gradient-to-b from-25% to-75% bg-[length:100%_400%] font-bold transition-[filter,background-position] duration-300 hover:bg-bottom gap-3 px-1 text-lg ~py-2.5/3 from-brand-purple to-brand-lime text-white w-full justify-center mb-3"
+                className="button-cutout group inline-flex items-center bg-gradient-to-b from-25% to-75% bg-[length:100%_400%] font-bold transition-[filter,background-position] duration-300 hover:bg-bottom gap-2 md:gap-3 px-1 text-sm md:text-lg py-2 md:~py-2.5/3 from-brand-purple to-brand-lime text-white w-full justify-center mb-3"
               >
-                <div className="flex size-6 items-center justify-center transition-transform group-hover:-rotate-[25deg] [&>svg]:h-full [&>svg]:w-full">
+                <div className="flex size-5 md:size-6 items-center justify-center transition-transform group-hover:-rotate-[25deg] [&>svg]:h-full [&>svg]:w-full">
                   <FaCreditCard />
                 </div>
                 <div className="w-px self-stretch bg-white/25" />
@@ -164,7 +164,7 @@ export default function CartPage() {
 
               <Link
                 href="/#products"
-                className="block text-center text-brand-purple hover:underline"
+                className="block text-center text-brand-purple hover:underline text-sm md:text-base"
               >
                 Continue Shopping
               </Link>

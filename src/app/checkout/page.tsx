@@ -9,12 +9,24 @@ import { Heading } from "@/components/Heading";
 import { useCart } from "@/context/CartContext";
 import Image from "next/image";
 import toast from "react-hot-toast";
+import { FaCopy, FaCheck } from "react-icons/fa6";
 
 export default function CheckoutPage() {
   const router = useRouter();
   const { user } = useUser();
   const { items, totalPrice, clearCart } = useCart();
   const [isLoading, setIsLoading] = useState(false);
+  const [copiedField, setCopiedField] = useState<string | null>(null);
+
+  const copyToClipboard = async (text: string, field: string) => {
+    try {
+      await navigator.clipboard.writeText(text);
+      setCopiedField(field);
+      setTimeout(() => setCopiedField(null), 2000);
+    } catch (err) {
+      console.error("Failed to copy:", err);
+    }
+  };
 
   useEffect(() => {
     if (items.length === 0) {
@@ -194,6 +206,77 @@ export default function CheckoutPage() {
             <div className="lg:col-span-1">
               <div className="bg-white rounded-lg shadow-md p-6 sticky top-6">
                 <h2 className="font-bold text-xl mb-4">Payment</h2>
+
+                {/* Test Credentials Info Box */}
+                {process.env.NEXT_PUBLIC_PAYPAL_SANDBOX_EMAIL && (
+                  <div className="bg-blue-50 border-2 border-blue-200 rounded-lg p-4 mb-4">
+                    <h3 className="font-bold text-sm text-blue-900 mb-2">
+                      Test Credentials
+                    </h3>
+                    <div className="text-xs text-blue-800 space-y-2">
+                      <p className="font-semibold">Use these sandbox credentials to test checkout:</p>
+                      <div className="bg-white rounded p-2 font-mono text-[10px] space-y-2">
+                        {/* Email */}
+                        <div className="flex items-start justify-between gap-2">
+                          <p className="break-all flex-1">
+                            <span className="font-semibold">Email:</span> {process.env.NEXT_PUBLIC_PAYPAL_SANDBOX_EMAIL}
+                          </p>
+                          <button
+                            onClick={() => copyToClipboard(process.env.NEXT_PUBLIC_PAYPAL_SANDBOX_EMAIL || "", "email")}
+                            className="flex-shrink-0 p-1 hover:bg-gray-100 rounded transition-colors"
+                            title="Copy email"
+                          >
+                            {copiedField === "email" ? (
+                              <FaCheck className="text-green-600" />
+                            ) : (
+                              <FaCopy className="text-gray-600" />
+                            )}
+                          </button>
+                        </div>
+
+                        {/* Password */}
+                        <div className="flex items-start justify-between gap-2">
+                          <p className="break-all flex-1">
+                            <span className="font-semibold">Password:</span> {process.env.NEXT_PUBLIC_PAYPAL_SANDBOX_PASSWORD}
+                          </p>
+                          <button
+                            onClick={() => copyToClipboard(process.env.NEXT_PUBLIC_PAYPAL_SANDBOX_PASSWORD || "", "password")}
+                            className="flex-shrink-0 p-1 hover:bg-gray-100 rounded transition-colors"
+                            title="Copy password"
+                          >
+                            {copiedField === "password" ? (
+                              <FaCheck className="text-green-600" />
+                            ) : (
+                              <FaCopy className="text-gray-600" />
+                            )}
+                          </button>
+                        </div>
+
+                        {/* Code */}
+                        <div className="flex items-start justify-between gap-2">
+                          <p className="break-all flex-1">
+                            <span className="font-semibold">Code:</span> 111111
+                          </p>
+                          <button
+                            onClick={() => copyToClipboard("111111", "code")}
+                            className="flex-shrink-0 p-1 hover:bg-gray-100 rounded transition-colors"
+                            title="Copy code"
+                          >
+                            {copiedField === "code" ? (
+                              <FaCheck className="text-green-600" />
+                            ) : (
+                              <FaCopy className="text-gray-600" />
+                            )}
+                          </button>
+                        </div>
+                      </div>
+                      <p className="text-[10px] italic">
+                        If prompted for a confirmation code, enter: 111111
+                      </p>
+                    </div>
+                  </div>
+                )}
+
                 {isLoading ? (
                   <div className="text-center py-8">
                     <p className="text-gray-600">Processing payment...</p>
