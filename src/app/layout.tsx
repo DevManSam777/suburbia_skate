@@ -6,6 +6,7 @@ import "./globals.css";
 import { SVGFilters } from "@/components/SVGFilters";
 import { CartProvider } from "@/context/CartContext";
 import { Toaster } from "react-hot-toast";
+import { BackToTop } from "@/components/BackToTop";
 
 const bowlby = Bowlby_One_SC({
   subsets: ["latin"],
@@ -43,6 +44,7 @@ export default function RootLayout({
             <SVGFilters />
             <Toaster position="top-right" />
           </CartProvider>
+          <BackToTop />
         </body>
       </html>
     </ClerkProvider>
