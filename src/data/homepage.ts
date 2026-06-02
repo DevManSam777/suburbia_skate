@@ -134,7 +134,7 @@ export const homepage: Homepage = {
         { type: 'paragraph', text: "Express yourself with custom designs. Make your board as unique as your style." }
       ],
       button: {
-        url: '/build',
+        url: '#products',
         text: 'Shop Boards'
       },
       theme: 'Orange',
